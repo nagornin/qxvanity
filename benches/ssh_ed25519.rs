@@ -7,8 +7,8 @@ pub fn benchmark(c: &mut Criterion) {
     let generator = SshEd25519Generator;
     let patterns = hint::black_box(RegexSet::new(["T3stP4tt3rn"]).unwrap());
 
-    c.bench_function("generate_ed25519", move |b| {
-        b.iter(|| generator.generate_matching(&patterns))
+    c.bench_function("generate_ed25519", |b| {
+        b.iter(|| generator.generate_matching(&patterns, false))
     });
 }
 

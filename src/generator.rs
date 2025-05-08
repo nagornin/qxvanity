@@ -7,6 +7,7 @@ pub trait Generator {
     fn generate_matching(
         &self,
         patterns: &RegexSet,
+        match_key_material: bool,
     ) -> Option<(Self::PrivateKey, Self::PublicKey)>;
 }
 

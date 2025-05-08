@@ -11,6 +11,7 @@ impl Generator for WireGuardGenerator {
     fn generate_matching(
         &self,
         patterns: &RegexSet,
+        _match_key_material: bool,
     ) -> Option<(Self::PrivateKey, Self::PublicKey)> {
         let private = x25519_dalek::StaticSecret::random();
         let public = x25519_dalek::PublicKey::from(&private);

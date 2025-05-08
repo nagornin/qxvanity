@@ -21,6 +21,7 @@ struct GeneratorParams<'a> {
     status_interval: Duration,
     threads: usize,
     count: u64,
+    match_key_material: bool,
 }
 
 fn generate<G, S, P>(generator: &G, params: GeneratorParams)
@@ -39,9 +40,12 @@ where
     let (tx, rx) = mpsc::channel();
 
     pool.in_place_scope(|scope| {
-        scope.spawn_broadcast(|_, _| {
+        scope.spawn_broadcast(move |_, _| {
             while tx
-                .send(generator.generate_matching(params.patterns))
+                .send(generator.generate_matching(
+                    params.patterns,
+                    params.match_key_material,
+                ))
                 .is_ok()
             {}
         });
@@ -119,6 +123,7 @@ fn main() {
         status_interval: args.status_interval,
         threads: args.threads,
         count: args.count,
+        match_key_material: args.match_key_material,
     };
 
     match args.kind {

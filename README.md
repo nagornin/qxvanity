@@ -45,6 +45,8 @@ Options:
           Number of matching keypairs to generate, 0 to keep generating forever [default: 1]
   -p, --threads <THREADS>
           Number of threads [default: auto]
+  -k, --match-key-material
+          Only match the actual key material, ignore any metadata
   -h, --help
           Print help
 ```

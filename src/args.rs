@@ -43,6 +43,12 @@ pub struct Args {
         help = "Number of threads"
     )]
     pub threads: usize,
+    #[arg(
+        short = 'k',
+        long = "match-key-material",
+        help = "Only match the actual key material, ignore any metadata"
+    )]
+    pub match_key_material: bool,
 }
 
 #[derive(ValueEnum, Clone)]

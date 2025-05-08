@@ -619,6 +619,7 @@ dependencies = [
  "rand_core",
  "rayon",
  "regex",
+ "ssh-encoding",
  "ssh-key",
  "thousands",
  "x25519-dalek",

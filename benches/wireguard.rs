@@ -8,7 +8,7 @@ pub fn benchmark(c: &mut Criterion) {
     let patterns = hint::black_box(RegexSet::new(["T3stP4tt3rn"]).unwrap());
 
     c.bench_function("generate_wireguard", |b| {
-        b.iter(|| generator.generate_matching(&patterns))
+        b.iter(|| generator.generate_matching(&patterns, false))
     });
 }
 
